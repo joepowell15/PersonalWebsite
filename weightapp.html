@@ -1,0 +1,278 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://bootswatch.com/4/cyborg/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css" integrity="sha256-IvM9nJf/b5l2RoebiFno92E5ONttVyaEEsdemDC6iQA=" crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.45">
+    <meta charset="UTF-8">
+    <title>WeightApp</title>
+</head>
+<body>
+    <div>
+        <div id="loginPage" class="login-holder login-card">
+            <h1>Sign In</h1>
+            <label>Username</label>
+            <input type="text" class="form-control" id="usernameLogin" required minlength="5" />
+            <label>Password</label>
+            <input type="password" class="form-control" id="passwordLogin" required minlength="5" />
+            <button id="loginBtn" type="button" class="btn btn-primary">Login</button>
+            <button id="regBtn" type="button" class="btn btn-secondary">Register</button>
+        </div>
+
+        <div id="regPage" style="display:none;" class="login-holder login-card">
+            <h1>Sign In</h1>
+            <label>Username</label>
+            <input type="text" class="form-control" id="Username" required />
+            <div id="UsernameValidation" class="text-danger"></div>
+            <label>Password</label>
+            <input type="password" class="form-control" id="Password" required />
+            <div id="PasswordValidation" class="text-danger"></div>
+            <label>Name</label>
+            <input type="text" class="form-control" id="Name" required />
+            <div id="NameValidation" class="text-danger"></div>
+            <label>Age</label>
+            <input type="number" class="form-control" min="1" max="130" id="age" />
+            <label>Starting Weight</label>
+            <input type="number" class="form-control" min="1" max="500" id="Weight" required />
+            <div id="WeightValidation" class="text-danger"></div>
+            <div id="regValidation" class="text-danger"></div>
+            <button id="bk2loginBtn" class="btn btn-primary">Back To Login</button>
+            <button id="completeRegBtn" class="btn btn-secondary">Register</button>
+        </div>
+
+        <div id="mainPage" style="display:none;" class="container">
+            <h1 style="text-align:center">Weight App</h1>
+            <blockquote id="quote" class="blockquote">
+                <p class="mb-0" id="quoteText"></p>
+                <footer class="blockquote-footer"><cite title="Source Title" id="quoteAuthor"></cite></footer>
+            </blockquote>
+            <span>
+                <label> Enter New Weight</label><input class="form-control" style="width:150px;" type="number" /><label>LBS</label>
+            </span>
+            <canvas id="myChart" style="width:500px;" height="200"></canvas>
+            <span>
+                <label>Average Weight(Last 30 days): </label><span class="h5 mr-1" id="avgWeight">5%</span>
+                <label>Weight Change(Last 30 days): </label><span class="h5" id="weightChange">5%</span>
+            </span>
+
+            <canvas id="myChart2" style="width:500px;" height="200"></canvas>
+        </div>
+    </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"
+                integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+                crossorigin="anonymous"></script>
+</body>
+</html>
+<style>
+    .login-holder {
+        position: absolute;
+        padding: 10px;
+        top: 50%;
+        left: 50%;
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    .login-card {
+        width: 400px;
+        height: 600px;
+        border: 1px solid lightgrey;
+        border-radius: 5px;
+        background-color: rgba(21, 21, 21, 0.92);
+    }
+</style>
+<script>
+    var chartLabels = [];
+    var chartData = [];
+    var allWeights = [];
+    $(document).ready(() => {
+        GetNewQuote();
+        getWeightsForAPerson();
+    });
+
+    $("#regBtn").click(() => {
+        $("#loginPage").fadeOut(200, () => {
+            $("#regPage").fadeIn();
+        });
+    });
+
+    $("#bk2loginBtn").click(() => {
+        $("#regPage").fadeOut(200, () => {
+            $("#loginPage").fadeIn();
+        });
+    });
+
+    $("#completeRegBtn").click(() => {
+        var invalid = false;
+        $.each($('#regPage input[required]'), function () {
+            if ($(this).val().length == 0) {
+                $("#" + this.id).blur();
+                invalid = true;
+                console.log(invalid);
+            }
+            if (this.id == "Username" && $(this).val().length < 6 || this.id == "Password" && $(this).val().length < 6) {
+                $("#" + this.id).blur();
+                invalid = true;
+                console.log(invalid);
+            }
+        });
+
+        if (invalid) return;
+        RegisterUser();
+
+    });
+
+    $("#regPage input[required]").blur((e) => {
+
+        if (e.target.value.length == 0) {
+            $("#" + e.target.id + "Validation").text(e.target.id + " is required");
+            return;
+        }
+
+        if (e.target.id == "Username" && e.target.value.length < 6 || e.target.id == "Password" && e.target.value.length < 6) {
+            $("#" + e.target.id + "Validation").text(e.target.id + " must be atleast 6 characters");
+            return;
+        }
+
+        $("#" + e.target.id + "Validation").text("");
+    });
+
+    function GetNewQuote() {
+        $.ajax({
+            type: "GET",
+            url: 'api.php?action=getQuote',
+            contentType: 'JSON',
+            success: function (response) {
+                response = response.replace(/^\s+|\s+$/g, "");
+                response = JSON.parse(response);
+                $("#quote").fadeOut(200, () => {
+                    $("#quoteText").text(response[0].Quote);
+                    $("#quoteAuthor").text(response[0].Author);
+
+                }).fadeIn();
+            }
+        });
+    }
+
+    function RegisterUser() {
+        var regData = {};
+
+        $.each($('#regPage input'), function () {
+            var id = this.id;
+            console.log(id);
+            regData[this.id] = $(this).val();           
+        });
+   
+        $.ajax({
+            type: "POST",
+                url: 'api.php?action=register' + $.param(regData),
+            contentType: 'JSON',
+            data: { 'data': JSON.stringify(regData) },
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    }
+
+    function getWeightsForAPerson() {
+        $.ajax({
+            type: "GET",
+            url: 'api.php?action=getWeight&id=2',
+            contentType: 'JSON',
+            success: function (response) {
+                response = response.replace(/^\s+|\s+$/g, "");
+                response = JSON.parse(response);
+
+                $.each(response, (index, value) => {
+                    chartLabels.push(new Date(value.Date).toLocaleString("en-us", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }));
+                    chartData.push(value.Weight);
+                    allWeights.push(Number(value.Weight));
+                })
+                BuildLineWeightChart();
+                $("#avgWeight").text(GetAvg(allWeights));
+
+            }
+        });
+    }
+
+    function GetAvg(weights) {
+        const total = weights.reduce((acc, c) => acc + c, 0);
+        return total / weights.length;
+    }
+
+    setInterval(GetNewQuote, 6 * 1800);
+
+    var ctx = document.getElementById('myChart');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+
+    function BuildLineWeightChart() {
+        var ctx2 = document.getElementById('myChart2');
+        var myChart = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: chartLabels,
+                datasets: [{
+                    label: 'Weight',
+                    data: chartData,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            precision: 0
+                        }
+                    }]
+                }
+            }
+        });
+    }
+
+</script>

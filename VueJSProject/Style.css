@@ -1,0 +1,44 @@
+﻿body {
+    background-color:#1e1e1e;
+    color:white;
+}
+.title{
+
+    text-align:center;
+    margin:20px;
+
+}
+#groupInfo, #rackInfo{
+
+    margin-left:20px;
+}
+.error{
+    margin-bottom:-20px;
+
+}
+.ddMenu{
+
+    font-size:28px;
+}
+.input {
+
+    text-align: left;
+    margin: auto;
+    display: table;
+    width:40%;
+}
+    #search {
+    
+    
+
+    width: 100%; 
+    font-size: 16px; 
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd; 
+    margin-bottom: 12px;
+}
+
+.spacer{
+
+    margin-top:40px;
+}

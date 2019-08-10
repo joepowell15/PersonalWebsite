@@ -1,0 +1,443 @@
+﻿<!DOCTYPE html>
+
+<noscript>
+    <title>Jovaughn's Portfolio</title>
+    <div class="text-danger">
+        <h1>This site requires javascript because it is a single page application</h1>
+    </div>
+    <a href="pictures/jovaughnpowellsresume.pdf" target="_blank">View Resume</a>
+    <div class="content">
+        <h1>Projects</h1>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Project Name</th>
+                        <th scope="col">Project Type</th>
+                        <th scope="col">Status</th>
+                        <th scope="col" style="width:200px">Source Code</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Code Editor for C++ Beginners </td>
+                        <td>C# WPF App</td>
+                        <td>Completed</td>
+                        <td>
+                            <a href="https://abjj.visualstudio.com/_git/tEditor" target="_blank">View Code</a>
+                            <br />
+                            <br />
+                            <a href="./src code/CodeEditor.zip">
+                                Download
+                            </a>
+                        </td>
+                        <td>
+                            This program allows users to edit and create code without unneeded features. Pre-compiled .exe inside release folder
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Data Server Inventory Management Webapp</td>
+                        <td>HTML, CSS, Javascript,AJAX, PHP, Mysql Web App</td>
+                        <td>Bug Checking/ Refactoring</td>
+                        <td>
+                            <a href="https://dev.azure.com/JPowellWebsite/_git/DCIM%20Website%20APP" target="_blank">View Code</a>
+                            <br />
+                            <br />
+                            <a href="/VueJSProject/index.php" target="_blank">Live Demo</a>
+                        </td>
+                        <td>This project uses the languages to the left for CRUD operations. It has client and server side input validation and an archive created by Mysql triggers </td>
+                    </tr>
+                    <tr>
+                        <td>Old Personal Website</td>
+                        <td>HTML, CSS, and Javascript Website</td>
+                        <td>Completed</td>
+                        <td>
+                            <a href="https://dev.azure.com/JPowellWebsite/_git/Website" target="_blank">View Code</a>
+                        </td>
+                        <td>Hosted by Digital Ocean, Apache Webserver, Mobile Compatible</td>
+                    </tr>
+                    <tr>
+                        <td>Sql DB Search & Excel Converter</td>
+                        <td>C# WPF App + SQL</td>
+                        <td>Completed</td>
+                        <td><a href="src code/ServerReport.zip" download>Download Code</a>
+                        <td> This program allows users to pick columns, search, and print reports in excel</td>
+                    </tr>
+                    <tr>
+                        <td>Bell Lapadula Security Project</td>
+                        <td>C++ Console App</td>
+                        <td>Completed</td>
+                        <td>
+                            <a href="src code/BellLaPadula.zip" download>
+                                Download Code
+                            </a>
+                        </td>
+                        <td> This program simulates the BLP security system</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</noscript>
+<html>
+<head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=0.45">
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta http-equiv="Content-Language" content="en">
+    <title>Jovaughn's Portfolio</title>
+</head>
+<body>
+    <div id="app">
+        <div id="Title">
+            <div class="introText white-text">
+                <h2 class="introFade">Jovaughn Powell's Portfolio</h2>
+                <hr style="color:white">
+                <div>
+                    <h3 class="introFade center-align">Developer</h3>
+                </div>
+                <ul class="introFade" style="list-style-type:none;">
+                    <li>.Net Core, MVC, LINQ, Razor, Entity Framework</li>
+                    <li>Javascript, jQuery, Vue.js, AJAX</li>
+                    <li>PHP</li>
+                    <li>SQL</li>
+                </ul>
+            </div>
+        </div>
+
+        <nav style="display:none" id="navbar">
+            <div class="nav-wrapper grey darken-3">
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a id="EmailBtn" href="mailto: jovaughnpowell@my.unt.edu" target="_blank"><i class="material-icons">email</i></a></li>
+                    <li><a id="devOpsBtn" href="https://abjj.visualstudio.com/_git/tEditor" target="_blank"><i class="material-icons">code</i></a></li>
+                    <li><a id="projectBtn" class="link" onclick="FadeInProjects()" href="#">Projects</a></li>
+                    <li><a id="aboutBtn" class="link" onclick="FadeInAboutMe()" href="#">About Me</a></li>
+                    <li><a id="weightBtn" class="link" href="#" onclick="FadeInWeightApp()">WeightApp</a></li>
+                    <li><a id="vueProjectBtn" href="/VueJSProject/index.php" target="_blank">VueJS DCIM App</a></li>
+                    <li><a id="linkedInBtn" href="https://www.linkedin.com/in/jovaughnpowell" target="_blank">LinkedIn</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <ul class="sidenav" id="mobile-demo">
+            <li><a id="EmailBtn" href="mailto: jovaughnpowell@my.unt.edu" target="_blank"><i class="material-icons">email</i></a></li>
+            <li><a id="devOpsBtn" href="https://abjj.visualstudio.com/_git/tEditor" target="_blank"><i class="material-icons">code</i></a></li>
+            <li><a id="projectBtn" class="link" onclick="FadeInProjects()" href="#">Projects</a></li>
+            <li><a id="aboutBtn" class="link" onclick="FadeInAboutMe()" href="#">About Me</a></li>
+            <li><a id="weightBtn" class="link" href="#" onclick="FadeInWeightApp()">WeightApp</a></li>
+            <li><a id="vueProjectBtn" href="/VueJSProject/index.php" target="_blank">VueJS DCIM App</a></li>
+            <li><a id="linkedInBtn" href="https://www.linkedin.com/in/jovaughnpowell" target="_blank">LinkedIn</a></li>
+        </ul>
+
+
+        <div class="container">
+            <div id="Projects" style="display:none;text-align:center">
+                <h1 class="white-text" style="text-align:left;">Projects</h1>
+                <a href="pictures/jovaughnpowellsresume.pdf" target="_blank">View Resume</a>
+                <div class="row" style="height:400px;">
+
+                    <div class="col s4 hoverable" style="margin-bottom:20px">
+                        <div style="height:100%" class="card sticky-action grey darken-3">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="pictures/JavaScript-01.png">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator white-text">Health App<i class="material-icons white-text right">more_vert</i></span>
+                            </div>
+                            <div class="card-action"> <a href="#" target="_blank">Code coming soon</a></div>
+                            <div class="card-reveal grey darken-3">
+                                <span class="card-title black-text">Info<i class="material-icons right">close</i></span>
+                                <p class="white-text">
+                                    Visual Profile based weight/food tracking app
+                                    <br />
+                                    <br />
+                                    HTML, CSS, Javascript, jQuery, PHP, MySQL
+                                    <br />
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col s4 hoverable" style="margin-bottom:20px;">
+                        <div style="height:100%" class="card sticky-action grey darken-3">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="pictures/MySQL-01.png">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator white-text">Server Inventory App<i class="material-icons white-text right">more_vert</i></span>
+                            </div>
+                            <div class="card-action">
+                                <a href="https://dev.azure.com/JPowellWebsite/_git/DCIM%20Website%20APP" target="_blank">View Code</a>
+                                <a href="/VueJSProject/index.php" target="_blank">Live Demo</a>
+                            </div>
+                            <div class="card-reveal grey darken-3">
+                                <span class="card-title black-text">Info<i class="material-icons right">close</i></span>
+                                <p class="white-text">
+                                    This project uses vue.js and php for CRUD operations. It has client and server side input validation and an archive created by Mysql triggers
+                                    <br />
+                                    <br />
+                                    Vue.js, jQuery, AJAX, PHP, Mysql
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col s4 hoverable" style="margin-bottom:20px;">
+                        <div style="height:100%" class="card sticky-action grey darken-3">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator z-depth-5" src="pictures/C-Sharp-01.png">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator white-text">C# WPF App<i class="material-icons white-text right">more_vert</i></span>
+                            </div>
+                            <div class="card-action">
+                                <a href="https://abjj.visualstudio.com/_git/tEditor" target="_blank">View Code</a>
+                                <a href="./src code/CodeEditor.zip">
+                                    Download
+                                </a>
+                            </div>
+                            <div class="card-reveal grey darken-3">
+                                <span class="card-title black-text">Info<i class="material-icons right">close</i></span>
+                                <p class="white-text">
+                                    This program allows users to edit and create code without unneeded features. Pre-compiled .exe inside release folder
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col s4 hoverable" style="margin-bottom:20px;">
+                        <div style="height:100%" class="card sticky-action grey darken-3">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator z-depth-5" src="pictures/PHP-01.png">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator white-text">This Website<i class="material-icons white-text right">more_vert</i></span>
+                            </div>
+                            <div class="card-action">
+                                <a href="https://dev.azure.com/JPowellWebsite/" target="_blank">View Code</a>
+                            </div>
+                            <div class="card-reveal grey darken-3">
+                                <span class="card-title black-text">Info<i class="material-icons right">close</i></span>
+                                <p class="white-text">
+                                    Single Page Website. Hosted by Digital Ocean, Apache2 , Mobile Compatible
+                                    <br />
+                                    <br />
+                                    HTML, CSS, Javascript, Vue.js, jQuery
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="content" id="AboutMe" style="display:none;">
+                <h1 class="white-text">Developer</h1>
+                <h3 class="white-text">Objective</h3>
+                <p class="textBlock">
+                    To work in a dynamic IT environment and utilize my creativity and innovative thinking to benefit an organization and myself.
+                </p>
+                <h3 class="white-text">Hobbies</h3>
+                <p class="textBlock">
+                    Karoke, Basketball, Concerts, Listening to music, Fashion
+                </p>
+            </div>
+
+            <div id="WeightApp" style="display:none;color:gold;">
+                <div id="LoadingSpinner">
+                    <div class="d-flex center-align" role="status">
+                        <div class="preloader-wrapper big active">
+                            <div class="spinner-layer spinner-blue-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div><div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div><div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="loginPage" style="display:none" class="login-holder login-card hoverable">
+                    <div>
+                        <h1>Sign In</h1>
+                        <form autocomplete="off">
+                            <div class="input-field">
+                                <input class="white-text" id="usernameLogin" type="text" required />
+                                <label for="usernameLogin">Username</label>
+                            </div>
+                            <div class="input-field">
+                                <input class="white-text" id="passwordLogin" type="password" required />
+                                <label for="passwordLogin">Password</label>
+                            </div>
+                        </form>
+                        <button id="loginBtn" type="button" onclick="Login()" class="waves-effect waves-light btn">Login</button>
+                        <button id="regBtn" type="button" class="waves-effect waves-light btn blue">Register</button>
+                        <div id="loginValidation" class="text-danger"></div>
+                    </div>
+                </div>
+
+                <div id="regPage" style="display:none;" class="login-holder login-card hoverable">
+                    <div class="form-group">
+                        <h1>Register</h1>
+                        <div class="input-field">
+                            <input class="white-text" type="text" id="Username" required />
+                            <label for="Username">Username</label>
+                            <div id="UsernameValidation" class="text-danger"></div>
+                        </div>
+                        <div class="input-field">
+                            <input class="white-text" type="password" id="Password" required />
+                            <label for="Password">Password</label>
+                            <div id="PasswordValidation" class="text-danger"></div>
+                        </div>
+                        <div class="input-field">
+                            <input class="white-text" type="text" id="Name" required />
+                            <label for="Name">Name</label>
+                            <div id="NameValidation" class="text-danger"></div>
+                        </div>
+                        <div class="input-field">
+                            <input class="white-text" type="number" min="1" max="130" id="Age" />
+                            <label for="Age">Age</label>
+                        </div>
+                        <div class="input-field">
+                            <input class="white-text" type="number" min="1" max="500" id="Weight" required />
+                            <label for="Weight">Starting Weight</label>
+                            <div id="WeightValidation" class="text-danger"></div>
+                        </div>
+
+                        <div id="regValidation" class="text-danger"></div>
+                        <button id="bk2loginBtn" class="waves-effect waves-light btn red">Back To Login</button>
+                        <button id="completeRegBtn" class="waves-effect waves-light btn blue">Register</button>
+                    </div>
+                </div>
+
+                <div id="mainPage" style="display:none;">
+                    <div class="fixed-action-btn">
+                        <a class="btn-floating btn-large red" onclick="Logout()">
+                            <i class="large material-icons">exit_to_app</i>
+                        </a>
+                    </div>
+                    <h1 style="text-align:center">Weight App</h1>
+                    <blockquote id="quote" class="blockquote">
+                        <p class="mb-0" id="quoteText"></p>
+                        <footer class="blockquote-footer"><cite title="Source Title" id="quoteAuthor"></cite></footer>
+                    </blockquote>
+                    <!-- Modal Trigger -->
+                    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Add New Weight</a>
+
+                    <!-- Modal Structure -->
+                    <div id="modal1" class="modal bottom-sheet">
+                        <div class="modal-content grey darken-3 white-text">
+                            <div class="input-field">
+                                <input id="weightDate" type="text" class="datepicker black-text">
+                                <label for="weightDate">Date</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer grey darken-3 white-text">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat white-text">Submit</a>
+                        </div>
+                    </div>
+
+                    <canvas id="myChart" class="hoverable" style="width:500px;margin-bottom:30px;" height="200"></canvas>
+
+                    <span>
+                        <label>Average Weight(Last 30 days): </label><span class="h5 mr-1" id="avgWeight">5%</span>
+                        <label>Weight Change(Last 30 days): </label><span class="h5" id="weightChange">5%</span>
+                    </span>
+
+                    <canvas class="hoverable" id="myChart2" style="width:500px;margin-bottom:30px;" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js" integrity="sha256-arMsf+3JJK2LoTGqxfnuJPFTU4hAK57MtIPdFpiHXOU=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="weightApp.js"></script>
+<script>
+    var chartLabels = [];
+    var chartData = [];
+    var allWeights = [];
+    var personId;
+    var session = false;
+
+    $(window).resize(function () {
+        if (window.innerWidth < 1270) {
+            $('#card-holder').addClass('justify-content-center');
+        }
+        else {
+            $('#card-holder').removeClass('justify-content-center');
+        }
+    });
+
+    $(document).ready(function () {
+        M.AutoInit();
+        setTimeout(function () {
+            $("#navbar").fadeIn();
+            $("#Title").fadeOut();
+            $("#projectBtn").addClass("active");
+            $("#Projects").fadeIn(2000);
+
+        }, 5000);
+    });
+
+    function FadeInWeightApp() {
+        if ($("#weightBtn").hasClass("active")) {
+            return;
+        }
+
+        $(".link").removeClass("active");
+        $("#weightBtn").addClass("active");
+
+        $("#Projects, #AboutMe").fadeOut("fast", () => {
+            $("#WeightApp").fadeIn("slow");
+        });
+
+        CheckForSession();
+    }
+
+    function FadeInAboutMe() {
+        if ($("#aboutBtn").hasClass("active")) {
+            return;
+        }
+
+        $(".link").removeClass("active");
+        $("#aboutBtn").addClass("active");
+
+        $("#Projects, #WeightApp").fadeOut("fast", () => {
+            $("#AboutMe").fadeIn("slow");
+        });
+    }
+
+    function FadeInProjects() {
+        if ($("#projectBtn").hasClass("active")) {
+            return;
+        }
+
+        $(".link").removeClass("active");
+        $("#projectBtn").addClass("active");
+
+
+        $("#AboutMe, #WeightApp").fadeOut("fast", () => {
+            $("#Projects").fadeIn("slow");
+        });
+    }
+</script>
