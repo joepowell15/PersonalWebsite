@@ -1,9 +1,35 @@
-﻿
+﻿setInterval(GetNewQuote, 6 * 2500);
+
 function LoadMainPage() {
     $("#LoadingSpinner").fadeOut("fast");
     $("#mainPage").fadeIn("slow");
     GetNewQuote();
     getWeightsForAPerson();
+}
+
+function SubmitNewWeight() {
+    $("#weightReqMessage").text("");
+    if (!$("#weight").val()) {
+        $("#weightReqMessage").text("Required");
+        return;
+    }
+    var date = new Date($("#weightDate").val());
+    var formattedDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+    var params = $.param({ Date: formattedDate, Weight: $("#weight").val() });
+    $.ajax({
+        type: "PUT",
+        url: 'api.php?action=addWeight&' + params,
+        contentType: 'JSON',
+        success: function (response) {
+            if (response == 0) {
+                getWeightsForAPerson();
+                $('#newWeightModal').modal('close');
+            }
+            else {
+                $("#weightReqMessage").text(response);
+            }
+        }
+    });
 }
 
 function Logout() {
@@ -32,13 +58,13 @@ function Logout() {
 function Login(username, password) {
     $("#loginValidation").text("");
 
-    if (username  && password ) {
+    if (username && password) {
         var params = $.param({ Username: username, Password: password });
         $.ajax({
             type: "GET",
-            url: 'api.php?action=login&'+params,
+            url: 'api.php?action=login&' + params,
             contentType: 'JSON',
-            success: function (responseId) {      
+            success: function (responseId) {
                 if (responseId > 0) {
                     personId = responseId;
 
@@ -51,7 +77,7 @@ function Login(username, password) {
                     return;
                 }
                 else {
-                    $("#loginValidation").text("Login failed, try again");            
+                    $("#loginValidation").text("Login failed, try again");
                 }
             }
         });
@@ -82,23 +108,23 @@ function Login(username, password) {
     }
 }
 
-function CheckForSession() {   
+function CheckForSession() {
     $.ajax({
         type: "GET",
         url: 'api.php?action=sessionCheck',
         contentType: 'JSON',
-        success: function (response) {     
+        success: function (response) {
             if (response > 0) {
-                session = true;   
+                session = true;
                 personId = response;
-                LoadMainPage(); 
+                LoadMainPage();
             }
             else {
                 session = false;
                 $("#LoadingSpinner").fadeOut("slow", () => {
                     $("#loginPage").fadeIn("slow");
                 });
-            }     
+            }
         }
     });
 }
@@ -178,14 +204,14 @@ function RegisterUser() {
         contentType: 'JSON',
         success: function (response) {
             response = response.replace(/^\s+|\s+$/g, "");
-            response = JSON.parse(response);      
+            response = JSON.parse(response);
             Login(response.username, response.password);
         }
     });
 }
 
 function getWeightsForAPerson() {
-    //session id used to get person on server
+    //session id used to get person on server 
     $.ajax({
         type: "GET",
         url: 'api.php?action=getWeight',
@@ -193,13 +219,15 @@ function getWeightsForAPerson() {
         success: function (response) {
             response = response.replace(/^\s+|\s+$/g, "");
             response = JSON.parse(response);
-
+            chartData = [];
+            chartLabels = [];
             $.each(response, (index, value) => {
                 chartLabels.push(new Date(value.Date).toLocaleString("en-us", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }));
                 chartData.push(value.Weight);
                 allWeights.push(Number(value.Weight));
             })
             BuildLineWeightChart();
+            BuildBarWeightChart();
             $("#avgWeight").text(GetAvg(allWeights));
         }
     });
@@ -213,46 +241,31 @@ function GetAvg(weights) {
     return total / weights.length;
 }
 
-setInterval(GetNewQuote, 6 * 2500);
-
-var ctx = document.getElementById('myChart');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
+function BuildBarWeightChart() {
+    var ctx = document.getElementById('myChart');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: chartLabels,
+            datasets: [{
+                label: 'Weight',
+                data: chartData,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
             }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
         }
-    }
-});
-
+    });
+}
 
 function BuildLineWeightChart() {
     var ctx2 = document.getElementById('myChart2');
@@ -264,10 +277,10 @@ function BuildLineWeightChart() {
                 label: 'Weight',
                 data: chartData,
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 99, 132, 0.2)'
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 99, 132, 1)'
                 ],
                 borderWidth: 1
             }]
