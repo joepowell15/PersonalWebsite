@@ -102,7 +102,7 @@
 	</textarea>
 	<br>
    
-   <input class="btn btn-primary" :disabled=isDisabled type="button" id="submit" v-on:click:"add">Add Device</button>
+   <button class="btn btn-primary" :disabled=isDisabled type="button" id="submit" v-on:click:"add">Add Device</button>
 
   </div>
 </form>
