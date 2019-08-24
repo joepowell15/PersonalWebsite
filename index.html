@@ -28,7 +28,7 @@
                             <a href="https://abjj.visualstudio.com/_git/tEditor" target="_blank">View Code</a>
                             <br />
                             <br />
-                            <a href="./src code/CodeEditor.zip">
+                            <a href="./src/tEditor.zip" download>
                                 Download
                             </a>
                         </td>
@@ -116,7 +116,7 @@
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a id="EmailBtn" href="mailto: jovaughnpowell@my.unt.edu" target="_blank"><i class="material-icons">email</i></a></li>
-                    <li><a id="devOpsBtn" href="https://abjj.visualstudio.com/_git/tEditor" target="_blank"><i class="material-icons">code</i></a></li>
+                    <li><a id="devOpsBtn" href="https://github.com/joepowell15/PersonalWebsite" target="_blank"><i class="material-icons">code</i></a></li>
                     <li><a id="projectBtn" class="link" onclick="FadeInProjects()" href="#">Projects</a></li>
                     <li><a id="aboutBtn" class="link" onclick="FadeInAboutMe()" href="#">About Me</a></li>
                     <li><a id="weightBtn" class="link" href="#" onclick="FadeInWeightApp()">WeightApp</a></li>
@@ -128,7 +128,7 @@
 
         <ul class="sidenav" id="mobile-demo">
             <li><a id="EmailBtn" href="mailto: jovaughnpowell@my.unt.edu" target="_blank"><i class="material-icons">email</i></a></li>
-            <li><a id="devOpsBtn" href="https://abjj.visualstudio.com/_git/tEditor" target="_blank"><i class="material-icons">code</i></a></li>
+            <li><a id="devOpsBtn" href="https://github.com/joepowell15/PersonalWebsite" target="_blank"><i class="material-icons">code</i></a></li>
             <li><a id="projectBtn" class="link" onclick="FadeInProjects()" href="#">Projects</a></li>
             <li><a id="aboutBtn" class="link" onclick="FadeInAboutMe()" href="#">About Me</a></li>
             <li><a id="weightBtn" class="link" href="#" onclick="FadeInWeightApp()">WeightApp</a></li>
@@ -138,115 +138,115 @@
 
 
         <div class="container">
-            <div id="Projects" style="display:none;text-align:center">
+            <div id="Projects" style="display:none;text-align:center;">
                 <h1 class="white-text" style="text-align:left;">Projects</h1>
                 <a href="pictures/jovaughnpowellsresume.pdf" target="_blank">View Resume</a>
-                <div class="row" style="height:400px;">
+                <div class="row">
+                    <div id="RowHolder" style="display: flex;flex-wrap: wrap;justify-content: center;">
+                        <div class="hoverable crd">
+                            <div class="card large sticky-action grey darken-3">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img height="350" class="activator" src="pictures/JavaScript-01.png">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator white-text">Health App<i class="material-icons white-text right">more_vert</i></span>
+                                </div>
+                                <div class="card-action"> <a href="https://github.com/joepowell15/PersonalWebsite" target="_blank">Source Code</a></div>
+                                <div class="card-reveal grey darken-3">
+                                    <span class="card-title black-text">Info<i class="material-icons right">close</i></span>
+                                    <p class="white-text">
+                                        Visual Profile based weight/food tracking app
+                                        <br />
+                                        <br />
+                                        HTML, CSS, Javascript, jQuery, PHP, MySQL
+                                        <br />
 
-                    <div class="col s4 hoverable" style="margin-bottom:20px">
-                        <div style="height:100%" class="card sticky-action grey darken-3">
-                            <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator" src="pictures/JavaScript-01.png">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title activator white-text">Health App<i class="material-icons white-text right">more_vert</i></span>
-                            </div>
-                            <div class="card-action"> <a href="#" target="_blank">Code coming soon</a></div>
-                            <div class="card-reveal grey darken-3">
-                                <span class="card-title black-text">Info<i class="material-icons right">close</i></span>
-                                <p class="white-text">
-                                    Visual Profile based weight/food tracking app
-                                    <br />
-                                    <br />
-                                    HTML, CSS, Javascript, jQuery, PHP, MySQL
-                                    <br />
-
-                                </p>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col s4 hoverable" style="margin-bottom:20px;">
-                        <div style="height:100%" class="card sticky-action grey darken-3">
-                            <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator" src="pictures/MySQL-01.png">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title activator white-text">Server Inventory App<i class="material-icons white-text right">more_vert</i></span>
-                            </div>
-                            <div class="card-action">
-                                <a href="https://dev.azure.com/JPowellWebsite/_git/DCIM%20Website%20APP" target="_blank">View Code</a>
-                                <a href="/VueJSProject/index.php" target="_blank">Live Demo</a>
-                            </div>
-                            <div class="card-reveal grey darken-3">
-                                <span class="card-title black-text">Info<i class="material-icons right">close</i></span>
-                                <p class="white-text">
-                                    This project uses vue.js and php for CRUD operations. It has client and server side input validation and an archive created by Mysql triggers
-                                    <br />
-                                    <br />
-                                    Vue.js, jQuery, AJAX, PHP, Mysql
-                                </p>
+                        <div class="hoverable crd">
+                            <div class="card large sticky-action grey darken-3">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="pictures/MySQL-01.png">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator white-text">Server Inventory App<i class="material-icons white-text right">more_vert</i></span>
+                                </div>
+                                <div class="card-action">
+                                    <a href="https://github.com/joepowell15/PersonalWebsite" target="_blank">View Code</a>
+                                    <a href="/VueJSProject/index.php" target="_blank">Live Demo</a>
+                                </div>
+                                <div class="card-reveal grey darken-3">
+                                    <span class="card-title black-text">Info<i class="material-icons right">close</i></span>
+                                    <p class="white-text">
+                                        This project uses vue.js and php for CRUD operations. It has client and server side input validation and an archive created by Mysql triggers
+                                        <br />
+                                        <br />
+                                        Vue.js, jQuery, AJAX, PHP, Mysql
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col s4 hoverable" style="margin-bottom:20px;">
-                        <div style="height:100%" class="card sticky-action grey darken-3">
-                            <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator z-depth-5" src="pictures/C-Sharp-01.png">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title activator white-text">C# WPF App<i class="material-icons white-text right">more_vert</i></span>
-                            </div>
-                            <div class="card-action">
-                                <a href="https://abjj.visualstudio.com/_git/tEditor" target="_blank">View Code</a>
-                                <a href="./src code/CodeEditor.zip">
-                                    Download
-                                </a>
-                            </div>
-                            <div class="card-reveal grey darken-3">
-                                <span class="card-title black-text">Info<i class="material-icons right">close</i></span>
-                                <p class="white-text">
-                                    This program allows users to edit and create code without unneeded features. Pre-compiled .exe inside release folder
-                                </p>
+                        <div class="hoverable crd">
+                            <div class="card large sticky-action grey darken-3">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img height="350" class="activator z-depth-5" src="pictures/C-Sharp-01.png">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator white-text">C# WPF App<i class="material-icons white-text right">more_vert</i></span>
+                                </div>
+                                <div class="card-action">
+                                    <a href="https://abjj.visualstudio.com/_git/tEditor" target="_blank">View Code</a>
+                                    <a href="./src/TEditor.zip" download>
+                                        Download
+                                    </a>
+                                </div>
+                                <div class="card-reveal grey darken-3">
+                                    <span class="card-title black-text">Info<i class="material-icons right">close</i></span>
+                                    <p class="white-text">
+                                        This program allows users to edit and create code without unneeded features. Pre-compiled .exe inside release folder
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col s4 hoverable" style="margin-bottom:20px;">
-                        <div style="height:100%" class="card sticky-action grey darken-3">
-                            <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator z-depth-5" src="pictures/PHP-01.png">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title activator white-text">This Website<i class="material-icons white-text right">more_vert</i></span>
-                            </div>
-                            <div class="card-action">
-                                <a href="https://dev.azure.com/JPowellWebsite/" target="_blank">View Code</a>
-                            </div>
-                            <div class="card-reveal grey darken-3">
-                                <span class="card-title black-text">Info<i class="material-icons right">close</i></span>
-                                <p class="white-text">
-                                    Single Page Website. Hosted by Digital Ocean, Apache2 , Mobile Compatible
-                                    <br />
-                                    <br />
-                                    HTML, CSS, Javascript, Vue.js, jQuery
-                                </p>
+                        <div class="hoverable crd" style="margin-bottom:20px;width:375px;min-width:375px;margin-right:15px;">
+                            <div class="card large sticky-action grey darken-3">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator z-depth-5" src="pictures/PHP-01.png">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator white-text">This Website<i class="material-icons white-text right">more_vert</i></span>
+                                </div>
+                                <div class="card-action">
+                                    <a href="https://github.com/joepowell15/PersonalWebsite" target="_blank">View Code</a>
+                                </div>
+                                <div class="card-reveal grey darken-3">
+                                    <span class="card-title black-text">Info<i class="material-icons right">close</i></span>
+                                    <p class="white-text">
+                                        Single Page Website. Hosted by Digital Ocean, Apache2 , Mobile Compatible
+                                        <br />
+                                        <br />
+                                        HTML, CSS, Javascript, Vue.js, jQuery
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
-
             </div>
 
-            <div class="content" id="AboutMe" style="display:none;">
-                <h1 class="white-text">Developer</h1>
-                <h3 class="white-text">Objective</h3>
+            <div id="AboutMe" style="display:none">
+                <h1 class="white-text" style="text-align:left;">Developer</h1>
+                <h3 class="white-text" style="text-align:left;">Objective</h3>
                 <p class="textBlock">
                     To work in a dynamic IT environment and utilize my creativity and innovative thinking to benefit an organization and myself.
                 </p>
-                <h3 class="white-text">Hobbies</h3>
+                <h3 class="white-text" style="text-align:left;">Hobbies</h3>
                 <p class="textBlock">
                     Karoke, Basketball, Concerts, Listening to music, Fashion
                 </p>
@@ -333,19 +333,31 @@
                         <p class="mb-0" id="quoteText"></p>
                         <footer class="blockquote-footer"><cite title="Source Title" id="quoteAuthor"></cite></footer>
                     </blockquote>
-                    <!-- Modal Trigger -->
-                    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Add New Weight</a>
 
-                    <!-- Modal Structure -->
-                    <div id="modal1" class="modal bottom-sheet">
-                        <div class="modal-content grey darken-3 white-text">
-                            <div class="input-field">
-                                <input id="weightDate" type="text" class="datepicker black-text">
-                                <label for="weightDate">Date</label>
+                    <div class="section">
+                        <a class="waves-effect waves-light btn modal-trigger hoverable" href="#newWeightModal">Add New Weight</a>
+                    </div>
+
+
+
+                    <div id="newWeightModal" class="modal bottom-sheet grey darken-3">
+                        <div class="row">
+                            <div class="modal-content">
+                                <div class="col s6 offset-s6">
+                                    <div class="input-field">
+                                        <input id="weightDate" type="text" class="datepicker no-autoinit white-text">
+                                        <label class="white-text" for="weightDate">Date</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input id="weight" type="number" min="1" max="999" required class="validate white-text">
+                                        <label class="white-text" for="weight">Weight</label>
+                                        <div class="red-text" id="weightReqMessage"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer grey darken-3 white-text">
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat white-text">Submit</a>
+                            <a onclick="SubmitNewWeight()" class="waves-effect waves-green btn-flat white-text">Submit</a>
                         </div>
                     </div>
 
@@ -379,17 +391,10 @@
     var personId;
     var session = false;
 
-    $(window).resize(function () {
-        if (window.innerWidth < 1270) {
-            $('#card-holder').addClass('justify-content-center');
-        }
-        else {
-            $('#card-holder').removeClass('justify-content-center');
-        }
-    });
-
     $(document).ready(function () {
         M.AutoInit();
+        var elems = document.querySelectorAll('#weightDate');
+        var instances = M.Datepicker.init(elems, { format: "mm dd yyyy" });
         setTimeout(function () {
             $("#navbar").fadeIn();
             $("#Title").fadeOut();
