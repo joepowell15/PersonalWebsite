@@ -18,6 +18,44 @@ else if ($action=="sessionCheck")
     echo $_SESSION["id"];
     return;
 }
+else if ($action=="addWeight")
+{
+    $date= htmlspecialchars($_GET["Date"]);
+    $weight=htmlspecialchars($_GET["Weight"]);
+
+    if(!$date){
+        if(!$stmt = $conn->prepare("INSERT INTO Weights VALUES (?, ?, CURRENT_TIMESTAMP(),null)")){
+            echo "Prepare failed: (" . $conn->errno . ") " . $conn->error;
+            return -1;
+        };
+
+        if(!$stmt->bind_param('id', $_SESSION["id"], $weight)){
+            echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+            return -1;
+        }
+    }
+    else
+    {
+    	if(!$stmt = $conn->prepare("INSERT INTO Weights VALUES (?, ?, ?,null)")){
+            echo "Prepare failed: (" . $conn->errno . ") " . $conn->error;
+            return -1;
+        };
+
+        if(!$stmt->bind_param('ids', $_SESSION["id"], $weight,$date)){
+            echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+            return -1;
+        }
+    }
+
+    if(!$stmt->execute()){
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        return -1;
+    }
+    else
+    {
+        echo 0;
+    }
+}
 else if ($action=="endSesssion")
 {
     session_unset();
@@ -26,7 +64,7 @@ else if ($action=="endSesssion")
 }
 else if ($action=="getWeight") {
 
-	if(!$stmt = $conn->prepare("Select * From Weights WHERE PersonId=? Order By Date asc")){
+	if(!$stmt = $conn->prepare("Select PersonId,AVG(Weight) as Weight,Date From Weights WHERE PersonId=? GROUP BY Date , PersonId Order By Date asc")){
         echo "Prepare failed: (" . $conn->errno . ") " . $conn->error;
         return -1;
     };
