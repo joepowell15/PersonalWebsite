@@ -1,9 +1,9 @@
-﻿<?php
+<?php
 //get all device info about the rack requested
 $rack = $_REQUEST["rack"];
 $servername = "localhost";
 $username = "joe";
-$password = "Earthvsusa1515";
+$password = "";
 $dbname = "DCIM";
 
 // Create connection

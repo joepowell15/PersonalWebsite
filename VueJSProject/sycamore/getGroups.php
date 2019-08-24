@@ -1,8 +1,8 @@
-﻿<?php
+<?php
 
 $servername = "localhost";
 $username = "joe";
-$password = "Earthvsusa1515";
+$password = "";
 $dbname = "DCIM";
 
 // Create connection

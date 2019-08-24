@@ -1,8 +1,8 @@
-﻿<?php
+<?php
 //Get a list of all racks in the rack table
 $servername = "localhost";
 $username = "joe";
-$password = "Earthvsusa1515";
+$password = "";
 $dbname = "DCIM";
 
 // Create connection

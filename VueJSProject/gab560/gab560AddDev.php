@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 //Check if serial entered is already found
 $serial= formatInput(htmlspecialchars($_REQUEST["serialnum"]))	;
 $rack=formatInput(htmlspecialchars($_REQUEST["rack"]))	;
@@ -19,7 +19,7 @@ if(!(is_Numeric($pos)))
 }
 $servername = "localhost";
 $username = "joe";
-$password = "Earthvsusa1515";
+$password = "";
 $dbname = "DCIM";
 
 
