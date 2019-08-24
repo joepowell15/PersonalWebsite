@@ -8,17 +8,17 @@ body, html {
 #app {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; 
+    -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
     width: 100%;
 }
 
 .page {
-    height:inherit;
-    margin-left:20px;
-    margin-right:20px;
-    
+    height: inherit;
+    margin-left: 20px;
+    margin-right: 20px;
 }
+
 .z-depth-1 {
     box-shadow: 0 2px 2px 0 rgba(255, 255, 255, 0.14), 0 1px 5px 0 rgba(255, 255, 255, 0.12), 0 3px 1px -2px rgba(255, 255, 255, 0.2);
 }
@@ -53,28 +53,29 @@ body, html {
         box-shadow: 0 8px 17px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
     }
 
-.datepicker-table-wrapper{
-    background-color:gray;
+
+.datepicker-table-wrapper {
+    background-color: gray;
 }
 
-.datepicker-date-display{
-    background-color:darkslategrey;
+.datepicker-date-display {
+    background-color: darkslategrey;
 }
 
 a.nav-link, test {
     color: yellow;
 }
 
-ul, p,td {
+ul, p, td {
     color: white;
 }
 
-h1{
-    padding-bottom:50px;
+h1 {
+    padding-bottom: 50px;
 }
 
-p{
-    padding-left:20px;
+p {
+    padding-left: 20px;
 }
 
 .textBlock {
@@ -87,7 +88,7 @@ p{
 
 .nav {
     background-color: #080808;
-    text-align:center;
+    text-align: center;
     padding-top: 30px;
     padding-bottom: 10px;
     color: yellow;
@@ -97,7 +98,7 @@ p{
 }
 
 .introFade {
-    animation-duration:2s;
+    animation-duration: 2s;
     animation-name: fadeHeader;
     animation-timing-function: cubic-bezier(0.71, 0.55, 0.62, 1.57);
 }
@@ -165,3 +166,13 @@ a {
     background-color: rgba(21, 21, 21, 0.92);
 }
 
+.card {
+    margin: unset;
+}
+
+.crd {
+    margin-bottom: 20px;
+    width: 375px;
+    min-width: 375px;
+    margin-right: 15px;
+}
